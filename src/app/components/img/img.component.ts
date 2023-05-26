@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, OnChanges, AfterViewInit, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewInit, OnDestroy, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
@@ -7,14 +7,17 @@ import { Component, OnInit, Input, EventEmitter, Output, OnChanges, AfterViewIni
 })
 export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   img: string = '';
 
-  @Input('img') 
+  // eslint-disable-next-line @angular-eslint/no-input-rename
+  @Input('img')
   set changeImg(newImg: string) {
     this.img = newImg;
-    console.log('change just img', this.img);
+    console.log('change just img  =>' ,this.img);
     // code
   }
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   @Input() alt: string = '';
   @Output() loaded = new EventEmitter<string>();
   imageDefault = './assets/images/default.png';
@@ -23,20 +26,23 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   constructor() {
     // before render
-    // no async -- once time
+    // NO async -- once time
     console.log('constructor', 'imgValue =>', this.img);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // before render
-    // changes inputs -- many times
+    // before - during render
+    // changes inputs -- multiples times
     console.log('ngOnChanges', 'imgValue =>', this.img);
-    console.log('changes',changes);
+    console.log('changes', changes);
+    // if (changes.) {
+    //   // code
+    // }
   }
 
   ngOnInit(): void {
     // before render
-    // async - fetch - API  -- once time
+    // async - fetch -- once time
     console.log('ngOnInit', 'imgValue =>', this.img);
     // this.counterFn = window.setInterval(() => {
     //   this.counter += 1;
@@ -46,12 +52,12 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   ngAfterViewInit() {
     // after render
-    // handler children
+    // handler children -- once time
     console.log('ngAfterViewInit');
   }
 
   ngOnDestroy() {
-    // delete
+    // delete -- once time
     console.log('ngOnDestroy');
     // window.clearInterval(this.counterFn);
   }

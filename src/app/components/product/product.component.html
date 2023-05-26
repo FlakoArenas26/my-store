@@ -1,3 +1,5 @@
-<h2> {{ product.name }} </h2>
 <app-img  [img]="product.image"></app-img>
-<p> $ {{ product.price.toLocaleString('es-CO') }} </p>
+<h2> {{ product.price | currency: 'COP' }} </h2>
+<p> {{ product.title }} </p>
+<p appHighlight> {{ product.description}} </p>
+<button (click)="onAddToCart()">Add cart</button>

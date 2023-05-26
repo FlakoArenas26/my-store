@@ -1,8 +1,7 @@
-<img [src]="img" alt="" (load)="imgLoaded()" (error)="imgError()" *ngIf="img; else elseImg">
+<!-- eslint-disable @angular-eslint/template/alt-text -->
+// eslint-disable-next-line @angular-eslint/template/alt-text
+<img (load)="imgLoaded()" (error)="imgError()" [src]="img" *ngIf="img; else elseImg">
+<!-- <h3>{{ counter }}</h3> -->
 <ng-template #elseImg>
-  <img [src]="imageDefault" width="200" alt="">
+  <img [src]="imageDefault" alt="">
 </ng-template>
-
-<!-- <p>
-  {{ counter }}
-</p> -->
